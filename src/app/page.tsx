@@ -129,6 +129,10 @@ export default function SpeedTest() {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <footer className="mt-16 text-sm text-muted text-center">
+        © 2025 Faisal Naseer. All rights reserved.
+      </footer>
+
     </main>
   );
 }
