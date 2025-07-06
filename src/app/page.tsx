@@ -32,7 +32,7 @@ export default function SpeedTest() {
     setUpload('...');
     setPing('...');
 
-    const interval = 1000;
+    const interval = 250;
     const duration = 5000;
     const samples = Math.floor(duration / interval);
     const downloadSamples: number[] = [];
