@@ -1,4 +1,4 @@
-// app/page.tsx 
+// app/page.tsx (Updated with beautiful theme styling)
 'use client';
 import { useState } from 'react';
 import {
@@ -32,8 +32,8 @@ export default function SpeedTest() {
     setUpload('...');
     setPing('...');
 
-    const interval = 2000;
-    const duration = 5000;
+    const interval = 1000;
+    const duration = 10000;
     const samples = Math.floor(duration / interval);
     const downloadSamples: number[] = [];
     const uploadSamples: number[] = [];
@@ -44,7 +44,7 @@ export default function SpeedTest() {
         const u = await testUpload();
         downloadSamples.push(+d);
         uploadSamples.push(+u);
-        setGraphData((prev) => [...prev, { time: `${i+1}s`, download: +d, upload: +u }]);
+        setGraphData((prev) => [...prev, { time: `${i + 1}s`, download: +d, upload: +u }]);
       } catch (error) {
         console.error('Speed test error:', error);
       }
@@ -96,36 +96,36 @@ export default function SpeedTest() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Internet Speed Meter</h1>
+    <main className="flex flex-col items-center justify-center min-h-screen px-4 py-10 bg-[var(--background)] text-[var(--text-primary)]">
+      <h1 className="text-4xl font-bold mb-8 tracking-tight">Internet Speed Meter</h1>
 
       <div className="grid gap-4 w-full max-w-md">
-        <div className="p-4 bg-white rounded-2xl shadow text-xl">Download: <strong>{download}</strong></div>
-        <div className="p-4 bg-white rounded-2xl shadow text-xl">Upload: <strong>{upload}</strong></div>
-        <div className="p-4 bg-white rounded-2xl shadow text-xl">Ping: <strong>{ping}</strong></div>
+        <div className="card text-xl">Download: <strong>{download}</strong></div>
+        <div className="card text-xl">Upload: <strong>{upload}</strong></div>
+        <div className="card text-xl">Ping: <strong>{ping}</strong></div>
       </div>
 
       <button
         onClick={runTest}
-        className="bg-blue-600 text-white py-2 px-4 mt-6 rounded-xl hover:bg-blue-700 disabled:opacity-50"
+        className="button-primary mt-6 disabled:opacity-50"
         disabled={loading}
       >
-        {loading ? 'Testing (5s)...' : 'Start Test'}
+        {loading ? 'Testing (10s)...' : 'Start Test'}
       </button>
 
-      <div className="w-full max-w-3xl mt-10">
+      <div className="w-full max-w-3xl mt-12 rounded-2xl overflow-hidden">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart
             data={graphData}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis domain={[0, 'auto']} />
+            <CartesianGrid strokeDasharray="3 3" stroke={"var(--border-color)"} />
+            <XAxis dataKey="time" stroke={"var(--text-muted)"} />
+            <YAxis domain={[0, 'auto']} stroke={"var(--text-muted)"} />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="download" stroke="#8884d8" name="Download (Mbps)" />
-            <Line type="monotone" dataKey="upload" stroke="#82ca9d" name="Upload (Mbps)" />
+            <Line type="monotone" dataKey="download" stroke="#3b82f6" name="Download (Mbps)" />
+            <Line type="monotone" dataKey="upload" stroke="#10b981" name="Upload (Mbps)" />
           </LineChart>
         </ResponsiveContainer>
       </div>
