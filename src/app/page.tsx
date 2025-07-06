@@ -1,4 +1,4 @@
-// app/page.tsx (Updated with beautiful theme styling)
+// app/page.tsx
 'use client';
 import { useState } from 'react';
 import {
@@ -32,8 +32,8 @@ export default function SpeedTest() {
     setUpload('...');
     setPing('...');
 
-    const interval = 1000;
-    const duration = 10000;
+    const interval = 100;
+    const duration = 3000;
     const samples = Math.floor(duration / interval);
     const downloadSamples: number[] = [];
     const uploadSamples: number[] = [];
@@ -44,7 +44,7 @@ export default function SpeedTest() {
         const u = await testUpload();
         downloadSamples.push(+d);
         uploadSamples.push(+u);
-        setGraphData((prev) => [...prev, { time: `${i + 1}s`, download: +d, upload: +u }]);
+        setGraphData((prev) => [...prev, { time: `${i}s`, download: +d, upload: +u }]);
       } catch (error) {
         console.error('Speed test error:', error);
       }
@@ -110,7 +110,7 @@ export default function SpeedTest() {
         className="button-primary mt-6 disabled:opacity-50"
         disabled={loading}
       >
-        {loading ? 'Testing (10s)...' : 'Start Test'}
+        {loading ? 'Testing (3s)...' : 'Start Test'}
       </button>
 
       <div className="w-full max-w-3xl mt-12 rounded-2xl overflow-hidden">
