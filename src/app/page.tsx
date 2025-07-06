@@ -32,8 +32,8 @@ export default function SpeedTest() {
     setUpload('...');
     setPing('...');
 
-    const interval = 1000;
-    const duration = 10000;
+    const interval = 500;
+    const duration = 5000;
     const samples = Math.floor(duration / interval);
     const downloadSamples: number[] = [];
     const uploadSamples: number[] = [];
@@ -110,7 +110,7 @@ export default function SpeedTest() {
         className="bg-blue-600 text-white py-2 px-4 mt-6 rounded-xl hover:bg-blue-700 disabled:opacity-50"
         disabled={loading}
       >
-        {loading ? 'Testing (10s)...' : 'Start Test'}
+        {loading ? 'Testing (5s)...' : 'Start Test'}
       </button>
 
       <div className="w-full max-w-3xl mt-10">
