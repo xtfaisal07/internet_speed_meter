@@ -32,7 +32,7 @@ export default function SpeedTest() {
     setUpload('...');
     setPing('...');
 
-    const interval = 500;
+    const interval = 1000;
     const duration = 5000;
     const samples = Math.floor(duration / interval);
     const downloadSamples: number[] = [];
@@ -44,7 +44,7 @@ export default function SpeedTest() {
         const u = await testUpload();
         downloadSamples.push(+d);
         uploadSamples.push(+u);
-        setGraphData((prev) => [...prev, { time: `${i + 1}s`, download: +d, upload: +u }]);
+        setGraphData((prev) => [...prev, { time: `${i}s`, download: +d, upload: +u }]);
       } catch (error) {
         console.error('Speed test error:', error);
       }
