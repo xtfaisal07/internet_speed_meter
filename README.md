@@ -74,7 +74,7 @@ app/
 │   ├── upload/     # Accepts 1MB payload
 │   └── ping/       # Returns simple ping response
 public/
-├── 
+├── demo.jpeg
 ```
 
 ---
